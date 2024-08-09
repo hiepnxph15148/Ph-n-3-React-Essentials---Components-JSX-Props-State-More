@@ -1,14 +1,22 @@
 import {useState} from "react";
 import "./App.css";
 import componentImage from "../src/assets/react.svg";
-import { CORE_CONCEPTS } from './main';  
+import { CORE_CONCEPTS } from '../src/data';  
 import Header from "./Component/Layout/Header";
-function CoreContempt(props: Props) {
+
+interface CoreComponent
+{
+  title: string,
+  description: string,
+  image:string
+}
+
+function CoreContempt({title,description,image} : CoreComponent) {
   return (
     <li>
-      <img src={props.image} alt={props.title} />
-      <h2>{props.title}</h2>
-      <p>{props.description}</p>
+      <img src={image} alt={title} />
+      <h2>{title}</h2>
+      <p>{description}</p>
     </li>
   );
 }
@@ -23,26 +31,9 @@ function App() {
           <h2>Core Component</h2>
           <selection id="core-concepts">
             <ul>
-              <CoreContempt
-                title={CORE_CONCEPTS[0].title}
-                description="A component is a reusable building block in React."
-                image={componentImage}
-              />
-              <CoreContempt
-                title="Component"
-                description="A component is a reusable building block in React."
-                image={componentImage}
-              />{" "}
-              <CoreContempt
-                title="Component"
-                description="A component is a reusable building block in React."
-                image={componentImage}
-              />{" "}
-              <CoreContempt
-                title="Component"
-                description="A component is a reusable building block in React."
-                image={componentImage}
-              />
+              {CORE_CONCEPTS.map((concept,index) =>(
+                 <CoreContempt key={index} {...concept} />
+              ))}
             </ul>
           </selection>
         </main>
