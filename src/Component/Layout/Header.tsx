@@ -1,4 +1,5 @@
 import reactImage from "../../assets/react.svg";
+import './Header.css'
 const reactDescriptions = ["Fundamentals", "Crucials", "Core"];
 
 function getRadomInt(max: number) {
